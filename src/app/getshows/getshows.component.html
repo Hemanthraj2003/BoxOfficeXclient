@@ -1,0 +1,55 @@
+<div class="flex flex-col flex-1 p-5">
+  <div class="text-[30px] text-gray-400 p-5">
+    Shows for : {{ selectedMovie.title }}
+  </div>
+  <div class="flex flex-1 p-5 h-full justify-between">
+    <div
+      *ngIf="showsForMovie.length != 0"
+      class="p-4 overflow-y-auto overflow-x-hidden"
+    >
+      <div
+        *ngFor="let show of showsForMovie"
+        class="flex w-[58vw] justify-between bg-slate-200 p-7 mt-2 rounded-[12px]"
+        (click)="selectShow(show.showID!)"
+      >
+        <div class="text-[20px] text-gray-400">
+          {{ show.date | date }}
+        </div>
+        <div class="text-green-400 font-[600] text-[15px]">{{ show.slot }}</div>
+      </div>
+    </div>
+    <div
+      *ngIf="showsForMovie.length == 0"
+      class="flex justify-center items-center text-[15px] text-gray-400 w-[58vw]"
+    >
+      No Shows Available
+    </div>
+    <div
+      class="flex p-10 rounded-[15px] h-[590px] w-[35vw] justify-center items-center"
+    >
+      <div class="flex flex-col h-full w-full px-14">
+        <div class="w-full h-[340px] border">
+          <img
+            src="{{ selectedMovie.posterURL }}"
+            alt="{{ selectedMovie.title }}"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="flex flex-col justify-around flex-1 w-full h-full border p-4"
+        >
+          <div class="text-[40px] text-gray-400 font-[600] text-ellipsis">
+            {{ selectedMovie.title }}
+          </div>
+          <div class="line-clamp-3 text-[14px] text-gray-400 mt-5">
+            {{ selectedMovie.description }}
+          </div>
+          <div class="flex justify-between px-10 font-[600] mt-3 text-gray-400">
+            <div>{{ selectedMovie.releaseDate | date }}</div>
+            <div>{{ selectedMovie.ratings }} / 10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

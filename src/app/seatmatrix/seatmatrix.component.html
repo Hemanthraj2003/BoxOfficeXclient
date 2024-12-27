@@ -1,0 +1,25 @@
+<div class="bg-slate-200 w-[850px] p-6 rounded-[30px]">
+  <div class="flex-1 text-center flex justify-center pb-16 pt-4 box-border">
+    <div class="text-[28px] w-[380px] border bg-white py-8 rounded-[10px]">
+      Screen Here
+    </div>
+  </div>
+  <div class="grid grid-cols-8 gap-[40px] flex-1 px-14 mb-8">
+    <div
+      *ngFor="let seat of data | keyvalue"
+      [ngClass]="
+        selectedSeat[seat.key] == true
+          ? 'bg-blue-400 text-white'
+          : seat.value
+          ? 'bg-slate-200 text-slate-400'
+          : 'bg-white hover:bg-orange-300 hover:border-orange-300 hover:text-white'
+      "
+      class="w-[50px] h-[50px] border-[2px] border-white rounded-[5px] cursor-pointer p-3 text-center"
+      (click)="setValue(seat.key)"
+    >
+      <div>
+        {{ seat.key }}
+      </div>
+    </div>
+  </div>
+</div>

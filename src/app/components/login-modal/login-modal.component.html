@@ -1,0 +1,24 @@
+<div id="loginRootDiv" (click)="setLoginVisible()">
+  <mat-card
+    appearance="outlined"
+    id="loginRoot"
+    (click)="$event.stopPropagation()"
+  >
+    <mat-card-content id="loginCard">
+      <mat-form-field>
+        <mat-label>UserName</mat-label>
+        <input matInput name="username" [(ngModel)]="loginrecord.Username" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          name="password"
+          type="password"
+          [(ngModel)]="loginrecord.Password"
+        />
+      </mat-form-field>
+      <button mat-flat-button (click)="onLogin()">Login</button>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,82 @@
+<div class="flex flex-col h-full flex-1">
+  <div class="flex items-center w-full justify-center mt-7">
+    <div class="flex flex-col w-[600px] p-5 relative">
+      <div>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Search for movies</mat-label>
+          <input matInput (input)="onInput($event)" [(ngModel)]="ngvalue" />
+        </mat-form-field>
+      </div>
+      <div
+        class="flex flex-1 overflow-y-auto absolute w-[550px] mt-[60px] shadow-2xl"
+      >
+        <div
+          *ngIf="filtered.length == 0 && firstChar.length != 0"
+          class="flex flex-1 bg-white border justify-center items-center h-[200px] absolute"
+        >
+          No results
+        </div>
+        <div
+          *ngIf="filtered.length != 0"
+          class="flex flex-col flex-1 gap-1 h-[520px]"
+        >
+          <div
+            *ngFor="let movie of filtered"
+            class="flex p-5 gap-2 border-[2px] border-gray-100 rounded-[10px] bg-white hover:bg-gray-100"
+            (click)="selectedMovie(movie.movieID)"
+          >
+            <div class="w-[120px] h-[150px] border">
+              <img
+                src="{{ movie.posterURL }}"
+                alt="{{ movie.title }}"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flex flex-1 flex-col p-2 justify-evenly">
+              <div class="text-[18px] font-semibold text-gray-500">
+                {{ movie.title }}
+              </div>
+              <div class="text-[12] text-gray-500 line-clamp-3">
+                {{ movie.description }}
+              </div>
+              <div class="text-[12] text-gray-500">
+                {{ movie.releaseDate | date }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-1">
+    <div class="flex flex-col flex-1 px-10 pt-5">
+      <div class="text-[24px] font-[600] text-gray-500">Latest Movies</div>
+      <div class="grid grid-cols-3 gap-x-3 gap-y-10 my-7">
+        <div *ngFor="let movie of latestMovies">
+          <div
+            class="bg-slate-100 w-[450px] h-[300px] rounded-[12px] flex items-center justify-between box-border p-3"
+            (click)="selectedMovie(movie.movieID)"
+          >
+            <div class="flex w-[200px] h-[270px] border">
+              <img
+                src="{{ movie.posterURL }}"
+                alt="{movie.title}"
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div class="flex flex-1 flex-col h-full justify-around p-3">
+              <div class="text-[20px] font-[600] text-gray-500 line-clamp-2">
+                {{ movie.title }}
+              </div>
+              <div class="text-[16px] font-[500] text-gray-400 line-clamp-5">
+                {{ movie.description }}
+              </div>
+              <div class="text-gray-400">Rattings: {{ movie.ratings }}/10</div>
+              <div class="text-gray-400">{{ movie.releaseDate | date }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

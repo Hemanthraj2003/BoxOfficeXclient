@@ -1,0 +1,28 @@
+<div class="flex flex-col w-[100%] max-h-[100%] box-border">
+  <!-- navbar of the viewer -->
+  <div
+    class="flex w-[100%] justify-between items-center px-16 py-7 bg-[#ffffff] min-h-[70px] shadow-md"
+  >
+    <div class="text-black font-[900] text-[30px]">BoxOfficeX</div>
+    <div class="flex text-black text-xl w-[35%] justify-between px-20">
+      <div
+        (click)="setPresentActiveComponent('Home')"
+        class="cursor-pointer"
+        [routerLink]="['/user']"
+      >
+        Home
+      </div>
+
+      <div
+        (click)="setPresentActiveComponent('MyProfile')"
+        class="cursor-pointer"
+        [routerLink]="[{ outlets: { viewer: ['profile'] } }]"
+      >
+        Profile
+      </div>
+    </div>
+  </div>
+  <div class="overflow-y-auto">
+    <router-outlet name="viewer"></router-outlet>
+  </div>
+</div>

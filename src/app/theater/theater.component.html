@@ -1,0 +1,95 @@
+<div
+  *ngIf="isMoviesModal"
+  class="flex h-full w-full top-0 left-0 fixed justify-center items-center bg-[#0006] z-50"
+  (click)="toggleIsMoviesModal()"
+>
+  <div
+    class="flex flex-col w-[500px] h-[580px] bg-white p-5"
+    (click)="$event.stopPropagation()"
+  >
+    <div>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Search for movies</mat-label>
+        <input matInput (input)="onInput($event)" [(ngModel)]="ngvalue" />
+      </mat-form-field>
+    </div>
+    <div class="flex flex-1 overflow-y-auto">
+      <div
+        *ngIf="filtered.length == 0 && firstChar.length != 0"
+        class="flex flex-1 bg-white border justify-center items-center h-[200px]"
+      >
+        No results
+      </div>
+      <div *ngIf="filtered.length != 0" class="flex flex-col flex-1 gap-1">
+        <div
+          *ngFor="let movie of filtered"
+          class="flex p-5 gap-2 border-[2px] rounded-[10px] bg-white"
+          (click)="setMovieId(movie.movieID!)"
+        >
+          <div class="w-[120px] h-[150px] border">
+            <img
+              src="{{ movie.posterURL }}"
+              alt="{{ movie.title }}"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex flex-1 flex-col p-2 justify-evenly">
+            <div class="text-[18px] font-semibold text-gray-500">
+              {{ movie.title }}
+            </div>
+            <div class="text-[12] text-gray-500 line-clamp-3">
+              {{ movie.description }}
+            </div>
+            <div class="text-[12] text-gray-500">
+              {{ movie.releaseDate | date : "shortDate" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex">
+  <div class="flex flex-col gap-3 w-[500px] h-full p-5 m-32">
+    <button
+      class="m-2 p-2 border-[2px] hover:bg-gray-400 rounded-[10px]"
+      (click)="toggleIsMoviesModal()"
+    >
+      Select Movie
+    </button>
+    movieID: {{ showData.movieID }}
+    <mat-form-field>
+      <mat-label>Ticket Cost</mat-label>
+      <input matInput [(ngModel)]="showData.cost" type="number" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Show Date</mat-label>
+      <input
+        matInput
+        [(ngModel)]="showData.date"
+        type="date"
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Slot</mat-label>
+      <mat-select matNativeControl required [(ngModel)]="showData.slot">
+        <mat-option value="8:00 am - 12:00 am">8:00 am - 12:00 am</mat-option>
+        <mat-option value="2:00 am - 5:00 pm">2:00 am - 5:00 pm</mat-option>
+        <mat-option value="7:00 am - 11:00 pm">7:00 am - 11:00 pm</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      class="m-2 p-2 border-[2px] hover:bg-gray-400 rounded-[10px]"
+      (click)="addShow()"
+    >
+      Add Show
+    </button>
+  </div>
+  <app-god-user></app-god-user>
+</div>

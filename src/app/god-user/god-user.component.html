@@ -1,0 +1,37 @@
+<div class="flex flex-col gap-3 w-[500px] h-full p-5 m-32">
+  <mat-form-field>
+    <mat-label>Movie Name</mat-label>
+    <input matInput type="text" name="movie" [(ngModel)]="newMovie.title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Poster Url</mat-label>
+    <input matInput type="text" name="url" [(ngModel)]="newMovie.posterURL" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Release Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [(ngModel)]="newMovie.releaseDate"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Movie Description</mat-label>
+    <input
+      matInput
+      type="text"
+      name="description"
+      [(ngModel)]="newMovie.description"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rattings</mat-label>
+    <input matInput type="" name="description" [(ngModel)]="newMovie.ratings" />
+  </mat-form-field>
+
+  <button mat-flat-button (click)="putMovie()">Add Movie</button>
+</div>

@@ -1,0 +1,81 @@
+<app-signin-modal *ngIf="isSigninVisible"></app-signin-modal>
+<app-login-modal *ngIf="isLoginVisible"></app-login-modal>
+<div class="w-full h-full min-h-screen bg-gray-50">
+  <!-- Navbar -->
+  <div class="flex bg-white py-5 items-center justify-between px-12 shadow-md">
+    <div class="flex items-center space-x-2">
+      <div class="font-black text-2xl text-black">BoxOfficeX</div>
+    </div>
+    <div class="flex space-x-4 w-[40%] justify-evenly">
+      <button mat-flat-button (click)="openLogin()" class="text-[18px]">
+        Login
+      </button>
+      <button mat-flat-button (click)="openSignin()" class="text-[18px]">
+        Sign Up
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="flex flex-col items-center justify-between px-12 py-20 bg-gradient-to-r text-gray-500"
+  >
+    <div class="space-y-6 text-center max-w-md">
+      <h1 class="text-4xl font-bold leading-tight">
+        Experience Movies Like Never Before
+      </h1>
+      <p class="text-lg">
+        Book your favorite movies at your convenience. With BoxOfficeX, explore
+        theaters near you, select your seats, and enjoy hassle-free bookings.
+      </p>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="bg-gray-100 py-16 px-12">
+    <div class="text-center text-[25px] font-semibold text-gray-800 mb-12">
+      Why Choose BoxOfficeX?
+    </div>
+    <div class="grid grid-cols-3 gap-12 text-center px-20 mt-10">
+      <div class="p-6 bg-white shadow-lg rounded-lg">
+        <div class="text-xl mb-6 mt-4 font-bold text-gray-700 text-[28px]">
+          Quick Bookings
+        </div>
+        <p class="mt-4 text-gray-600">
+          Book tickets in just a few clicks. Our intuitive interface ensures a
+          seamless experience.
+        </p>
+      </div>
+      <div class="p-6 bg-white shadow-lg rounded-lg">
+        <div class="text-xl mb-6 mt-4 font-bold text-gray-700 text-[28px]">
+          Customizable Seats
+        </div>
+        <p class="mt-4 text-gray-600">
+          Choose your favorite seats and avoid last-minute surprises.
+        </p>
+      </div>
+      <div class="p-6 bg-white shadow-lg rounded-lg">
+        <div class="text-xl mb-6 mt-4 font-bold text-gray-700 text-[28px]">
+          Exclusive Offers
+        </div>
+        <p class="mt-4 text-gray-600">
+          Get amazing discounts and rewards on every booking.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action Section -->
+  <div class="bg-white py-12 text-blue-500 text-center">
+    <h2 class="text-3xl font-bold">Ready to Watch Your Favorite Movie?</h2>
+    <p class="mt-4 text-lg">Register now and grab your tickets today!</p>
+    <button mat-raised-button class="mt-6" (click)="openSignin()">
+      Sign Up Now
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-8 text-gray-400 text-center">
+    <p>&copy; 2024 BoxOfficeX. All Rights Reserved.</p>
+    <p>Built with Angular, ASP.NET, and TailwindCSS</p>
+  </footer>
+</div>
